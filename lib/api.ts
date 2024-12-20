@@ -1,8 +1,6 @@
 export default {
   fetch: async function getData<T>({
     path,
-    query,
-    id,
   }: {
     path: string;
     query?: any;

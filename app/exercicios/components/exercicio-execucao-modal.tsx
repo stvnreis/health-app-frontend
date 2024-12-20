@@ -21,8 +21,8 @@ export function ExercicioExecucaoModal({
 }: ExercicioExecucaoModalProps) {
   const execucaoVazia = {
     idExercicio: data.idExercicio,
-    qtRepeticao: 0,
-    vlCarga: 0,
+    qtRepeticao: null,
+    vlCarga: null,
     nrSequencia: 0,
   };
   const [execucao, setExecucao] = useState<ExercicioExecucao>(execucaoVazia);
@@ -53,13 +53,15 @@ export function ExercicioExecucaoModal({
               <div className="flex flex-col gap-5">
                 <Input
                   label="Carga utilizada"
-                  value={execucao.vlCarga.toString()}
+                  value={execucao.vlCarga ? execucao.vlCarga.toString() : ""}
                   onChange={(e) => handleEdit("vlCarga", e.target.value)}
                 />
                 <Input
                   label="Quantidade de repetições"
                   type="number"
-                  value={execucao.qtRepeticao.toString()}
+                  value={
+                    execucao.qtRepeticao ? execucao.qtRepeticao.toString() : ""
+                  }
                   onChange={(e) => handleEdit("qtRepeticao", e.target.value)}
                 />
               </div>
@@ -68,7 +70,7 @@ export function ExercicioExecucaoModal({
             <div className="mt-5 gap-2 flex justify-end">
               <Button
                 color="danger"
-                onClick={() => {
+                onPress={() => {
                   handleClose();
                   onClose();
                 }}
@@ -79,7 +81,7 @@ export function ExercicioExecucaoModal({
                 color="primary"
                 isLoading={isSaving}
                 variant="ghost"
-                onClick={() => {
+                onPress={() => {
                   onSave();
                   onClose();
                 }}

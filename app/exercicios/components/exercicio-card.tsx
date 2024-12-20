@@ -16,7 +16,7 @@ export function ExercicioCard({ data }: ExercicioCardProps) {
 
   return (
     <>
-      <Card isPressable className="bg-primary-400" onPress={onOpen}>
+      <Card isPressable className="bg-primary-200" radius="sm" onPress={onOpen}>
         <CardBody className="flex gap-3 items-center">
           <label className="w-fit text-center">{data.dsExercicio}</label>
         </CardBody>

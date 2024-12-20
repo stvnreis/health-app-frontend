@@ -9,7 +9,7 @@ export function ExercicioAccordion({ data }: { data: Exercicio[] }) {
     <Accordion variant="shadow">
       {data.map((exercicio) => (
         <AccordionItem
-          key={exercicio.idExercicio}
+          key={exercicio.idExercicio + exercicio.dsExercicio}
           title={exercicio.dsExercicio}
         >
           {exercicio.execucoes?.map((execucao) => (

@@ -6,7 +6,7 @@ export type Exercicio = {
 
 export type ExercicioExecucao = {
   idExercicio: number;
-  vlCarga: number;
-  qtRepeticao: number;
+  vlCarga: number | null;
+  qtRepeticao: number | null;
   nrSequencia: number;
 };
