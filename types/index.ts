@@ -8,4 +8,5 @@ export type ExercicioExecucao = {
   idExercicio: number;
   vlCarga: number;
   qtRepeticao: number;
+  nrSequencia: number;
 };

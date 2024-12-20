@@ -8,7 +8,7 @@ export default {
     query?: any;
     id?: number | string;
   }): Promise<T> {
-    return fetch(process.env.NEXT_PUBLIC_API_URL + path)
+    return fetch(process.env.NEXT_PUBLIC_API_URL + encodeURI(path))
       .then((response) => response.json())
       .then((body) => body.data);
   },
@@ -16,7 +16,7 @@ export default {
     path: string,
     id: string | number,
   ): Promise<T> {
-    return fetch(process.env.NEXT_PUBLIC_API_URL + path + `/${id}`)
+    return fetch(process.env.NEXT_PUBLIC_API_URL + path + `/${id}`, {})
       .then((response) => response.json())
       .then((body) => body.data);
   },

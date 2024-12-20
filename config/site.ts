@@ -12,11 +12,19 @@ export const siteConfig = {
       label: "Exercícios",
       href: "/exercicios",
     },
+    {
+      label: "Execuções de hoje",
+      href: "/exercicios/execucoes",
+    },
   ],
   navMenuItems: [
     {
       label: "Exercícios",
       href: "/exercicios",
+    },
+    {
+      label: "Execuções de hoje",
+      href: "/exercicios/execucoes",
     },
   ],
   links: {
