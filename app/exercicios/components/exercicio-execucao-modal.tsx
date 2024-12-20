@@ -23,6 +23,7 @@ export function ExercicioExecucaoModal({
     idExercicio: data.idExercicio,
     qtRepeticao: 0,
     vlCarga: 0,
+    nrSequencia: 0,
   };
   const [execucao, setExecucao] = useState<ExercicioExecucao>(execucaoVazia);
   const [isSaving, setIsSaving] = useState(false);
