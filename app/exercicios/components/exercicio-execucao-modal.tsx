@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Modal, ModalContent } from "@nextui-org/modal";
-import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
 import { Exercicio, ExercicioExecucao } from "@/types";
 import api from "@/lib/api";
+import { Modal } from "@/components/modal";
 
 export interface ExercicioExecucaoModalProps {
   data: Exercicio;
@@ -45,53 +44,27 @@ export function ExercicioExecucaoModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-      <ModalContent>
-        {(onClose) => (
-          <div className="p-10">
-            <div>
-              <div className="flex flex-col gap-5">
-                <Input
-                  label="Carga utilizada"
-                  value={execucao.vlCarga ? execucao.vlCarga.toString() : ""}
-                  onChange={(e) => handleEdit("vlCarga", e.target.value)}
-                />
-                <Input
-                  label="Quantidade de repetições"
-                  type="number"
-                  value={
-                    execucao.qtRepeticao ? execucao.qtRepeticao.toString() : ""
-                  }
-                  onChange={(e) => handleEdit("qtRepeticao", e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="mt-5 gap-2 flex justify-end">
-              <Button
-                color="danger"
-                onPress={() => {
-                  handleClose();
-                  onClose();
-                }}
-              >
-                Fechar
-              </Button>
-              <Button
-                color="primary"
-                isLoading={isSaving}
-                variant="ghost"
-                onPress={() => {
-                  onSave();
-                  onClose();
-                }}
-              >
-                Salvar
-              </Button>
-            </div>
-          </div>
-        )}
-      </ModalContent>
+    <Modal
+      handleClose={handleClose}
+      handleSave={onSave}
+      isOpen={isOpen}
+      isSaving={isSaving}
+      title={`Registrar ${data.dsExercicio.toLocaleLowerCase()}`}
+      onOpenChange={onOpenChange}
+    >
+      <div className="flex flex-col gap-5">
+        <Input
+          label="Carga utilizada"
+          value={execucao.vlCarga ? execucao.vlCarga.toString() : ""}
+          onChange={(e) => handleEdit("vlCarga", e.target.value)}
+        />
+        <Input
+          label="Quantidade de repetições"
+          type="number"
+          value={execucao.qtRepeticao ? execucao.qtRepeticao.toString() : ""}
+          onChange={(e) => handleEdit("qtRepeticao", e.target.value)}
+        />
+      </div>
     </Modal>
   );
 }

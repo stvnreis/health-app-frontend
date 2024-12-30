@@ -12,6 +12,8 @@ interface ModalProps {
   onOpenChange: () => void;
   handleClose?: () => void;
   handleSave: () => void;
+  isSaving?: boolean;
+  title?: string;
 }
 
 export function Modal({
@@ -20,17 +22,20 @@ export function Modal({
   onOpenChange,
   handleClose,
   handleSave,
+  isSaving,
+  title,
 }: ModalProps) {
   return (
     <NextUiModal isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
         {(onClose) => (
-          <div className="p-10">
+          <div className="p-10 flex flex-col gap-5">
+            <h1 className="text-xl font-bold">{title}</h1>
             {children}{" "}
-            <div className="flex justify-end">
+            <div className="flex gap-3 justify-end">
               <Button
                 color="danger"
-                onClick={
+                onPress={
                   typeof handleClose === "function"
                     ? () => {
                         handleClose();
@@ -43,8 +48,9 @@ export function Modal({
               </Button>
               <Button
                 color="primary"
+                isLoading={isSaving ?? false}
                 variant="ghost"
-                onClick={() => {
+                onPress={() => {
                   handleSave();
                   onClose();
                 }}
